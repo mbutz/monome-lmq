@@ -21,7 +21,6 @@ define :build_playback_loop do | i |
       end
     end #on :looper_rec[n]
       time_warp get(:time_fix_play) do
-        puts "----------------> i ist: #{i}"
         s = sample track_sample,
           amp: get(:rec_amp)[i],
           lpf: get(:lpf)[j],

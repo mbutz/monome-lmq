@@ -1,4 +1,4 @@
-# monome-lmq-grid-22.rb
+# monome-lmq-grid-23.rb
 
 # Start serialoscd with:
 # /usr/bin/serialoscd resp. ~/bin/serialoscd

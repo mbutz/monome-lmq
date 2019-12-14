@@ -6,16 +6,23 @@
 set :host, "localhost"
 set :port, 14582
 use_bpm 120
-set :fpath, "~/projects/sonicpi/github/monome-lmq/"
+
+use_cue_logging false
+use_debug false
+use_midi_logging false
+use_osc_logging false
+
+set :lib_path, "~/projects/sonicpi/github/monome-lib/"
+set :include_path, "~/projects/sonicpi/github/monome-lmq/"
 # ------ no further adjustment neccessary ----------------------------------------
 use_osc get(:host), get(:port)
-run_file get(:fpath) + "monome-lmq-grid-23.rb"
+run_file get(:lib_path) + "monome-lib-23.rb"
 sleep 1
 osc_all(0)
 sleep 1
-run_file get(:fpath) + "monome-lmq-settings-30.rb"
-run_file get(:fpath) + "monome-lmq-helpers-22.rb"
-run_file get(:fpath) + "monome-live-looper-01.rb"
+run_file get(:include_path) + "monome-lmq-settings-30.rb"
+run_file get(:lib_path) + "monome-helpers-22.rb"
+run_file get(:include_path) + "monome-live-looper-01.rb"
 osc_page_level(get(:pages)[0])
 sleep 1
 
@@ -343,7 +350,7 @@ define :init_seq do | y |
 end
 sleep 2
 (0..3).each do |i|
-  #init_seq(i)
+  init_seq(i)
 end
 
 # /// Live Looper /////////////////////////////////////////////////////////////////
