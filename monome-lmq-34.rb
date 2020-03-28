@@ -88,7 +88,7 @@ live_loop :listen_to_monome do
     # // amp ///////////////////////////////////////////////////////////////////
     if s == 1 and get(:amp_grps).flatten.member? pressed
       grp = mem_of_grp(get(:amp_grps), pressed)
-      y2 = y - 4 # y minus offset
+      y2 = y - 4 # let y reflect track index instead of actual row (which is 4..7)
       # toggle key if it's not the same just pressed or the first of group
       if pressed != get(:last_pressed)[y2] or pressed == get(:amp_grps)[grp][0]
         toggle(x, y, 0, 7, 0, get(:amp_grps)[grp])
@@ -97,8 +97,7 @@ live_loop :listen_to_monome do
         elsif [4, 5, 6, 7].member? grp
           set_pos(:rec_amp, y2, get(:amps)[x-8])
         end
-        #puts "----- #{get(:seq_amp)} / #{get(:rec_amp)} -----"
-        # first fader key will toggle 0/0.25
+        # in case: first fader AND toggle = off; set amp = 0
         if x == 1 and get(:pages)[0][y][1] == 0
           set_pos(:seq_amp, y2, get(:amps)[0])
         elsif x == 9 and get(:pages)[0][y][9] == 0
@@ -106,7 +105,7 @@ live_loop :listen_to_monome do
         end
         set_pos(:last_pressed, y2, pressed)
       end
-      puts "-------------> Rec Amp: #{get(:rec_amp)}"
+      puts "----- Amps: #{get(:seq_amp)} / X: #{x} / Pages@1: #{get(:pages)[0][y][1]} -----"
     end # /amp
     # // Seq loop source ////////////////////////////////////////////////////
     if s == 1 and get(:toggle_grps)[3].member? pressed

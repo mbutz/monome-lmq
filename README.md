@@ -1,6 +1,6 @@
 # Monome lmq
 
-An Monome application to manipulate preconfigured or live recorded samples in Sonic Pi. 
+An Monome application to manipulate preconfigured or live recorded samples in Sonic Pi. Here is a [short video](https://www.youtube.com/watch?v=1BX77a6eO68) showing lmq in action.
 
 - Numbers in brackets, such as (1), refer to the white numbers in black circles in the illustrations  below.
 - The first illustration shows the lmq main page (a), the second shows one of the 8 parameter pages (b).
